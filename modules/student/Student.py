@@ -1,4 +1,4 @@
-class studentclass:
+class studentClass:
     def __init__(self):
         self.full_name = ''
         self.date_of_birth = ''
@@ -6,6 +6,7 @@ class studentclass:
         self.gender = ''
         self.mobile_number = ''
         self.email_address = ''
+        self.password = ''
         self.preferred_language = ''
         self.school_college_name = ''
         self.class_grade = ''
@@ -18,4 +19,10 @@ class studentclass:
         self.parent_guardian_relationship = ''
         self.parent_guardian_mobile_number = ''
         self.parent_guardian_email_address = ''
-        self.preferred_communication_method = '' 
+        self.preferred_communication_method = ''
+
+
+
+    def setuserNameandPassword(self, email, password):
+        self.email_address = email
+        self.password = password  
