@@ -1,28 +1,51 @@
 import sqlite3
-from pathlib import Path
 
-
-
-
-database_path = Path(__file__).with_name('student.db')
-# Path(__file__) → gets the path of the current Python file.
-
-# .with_name('student.db') → replaces the current filename with student.db.
-
-connection = sqlite3.connect(database_path)
-
-connection.execute(
-    '''
+# Create/connect to database
+conn = sqlite3.connect("tution.db")
+ 
+# Create a cursor
+cursor = conn.cursor()
+ 
+# Create a table
+cursor.execute("""
     CREATE TABLE IF NOT EXISTS student (
-        student_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        full_name TEXT,
-        date_of_birth_or_age TEXT,
-        gender TEXT,
-        mobile_number TEXT,
-        email_address TEXT
-    )
-    '''
-)
-connection.commit()
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        dob DATE,
+        age INTEGER,
+        genter TEXT,
+        mobile INTEGER,
+        email TEXT,
+        password TEXT,
+        preferred_language TEXT
+       
 
-connection.close()
+
+    )
+""")
+cursor.execute(""" 
+    INSERT INTO student  VALUES(
+    003,
+    'arunjith',
+    '11-1-2007',
+     20,
+    'male',
+     9943602123,
+    'abcd@gmail.com',
+    'password',
+    'english'
+    )
+
+    """)
+
+
+
+    
+ 
+# Save changes
+conn.commit()
+ 
+# Close connection
+conn.close()
+ 
+print("Database created successfully!")
