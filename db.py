@@ -6,7 +6,7 @@ conn = sqlite3.connect("tution.db")
 # Create a cursor
 cursor = conn.cursor()
  
-# Create a table
+# Create a table using DDL comments
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS student (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,24 +23,7 @@ cursor.execute("""
 
     )
 """)
-cursor.execute(""" 
-    INSERT INTO student  VALUES(
-    003,
-    'arunjith',
-    '11-1-2007',
-     20,
-    'male',
-     9943602123,
-    'abcd@gmail.com',
-    'password',
-    'english'
-    )
 
-    """)
-
-
-
-    
  
 # Save changes
 conn.commit()
