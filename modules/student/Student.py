@@ -24,6 +24,7 @@ class studentClass:
 
 
     def setuserNameandPassword(self, email, password):
+    
         self.email_address = email
         self.password = password  
 
@@ -37,9 +38,45 @@ class studentClass:
         self.mobile_number = mobile_number
         if len(self.mobile_number) != 10:
             raise ValueError("Mobile number must be 10 digits long.")
-        return
+            return 
         self.preferred_language = preferred_language
         self.school_college_name = school_college_name
         self.class_grade = class_grade
         self.board_curriculum = board_curriculum
         self.academic_year = academic_year
+
+    def savebasicdeatails(self):
+        import sqlite3
+        con= sqlite3.connect("tution.db")
+        cursor=con.cursor() 
+        cursor.execute("""
+        insert into student (
+            name,
+            dob,
+            age,
+            genter,
+            mobile,
+            email,
+            password,
+            preferred_language,
+            school_college_name,
+            class_grade,
+            board_curriculum,
+            academic_year
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+        """,
+        (self.full_name,
+        self.date_of_birth,
+        self.age,
+        self.gender,
+        self.mobile_number,
+        self.email_address,
+        self.password,
+        self.preferred_language,
+        self.school_college_name,
+        self.class_grade,
+        self.board_curriculum,
+        self.academic_year
+        ))
+
+        con.commit()

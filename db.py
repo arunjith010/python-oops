@@ -22,9 +22,27 @@ cursor.execute("""
 
 
     )
+""")    
+cursor.execute("""
+    ALTER TABLE student
+    ADD COLUMN school_college_name TEXT
 """)
 
- 
+cursor.execute("""
+    ALTER TABLE student
+    ADD COLUMN class_grade TEXT
+""")
+
+cursor.execute("""
+    ALTER TABLE student
+    ADD COLUMN board_curriculum TEXT
+""")
+
+cursor.execute("""
+    ALTER TABLE student
+    ADD COLUMN academic_year INTEGER
+""")
+
 # Save changes
 conn.commit()
  
